@@ -7,7 +7,7 @@ export const findCharacters = () => {
             name: character.name,
             status: character.status,
             image: character.image,
-        })),
+        }))
     );
     
 }

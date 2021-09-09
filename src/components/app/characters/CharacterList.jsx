@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Character from './Character.jsx';
+import '../App.css';
 
 const CharacterList = ({ characters }) => (
     <ul aria-label = "characters">
         {characters.map((character) => (
+        <div className="cards"> 
             <li key={character.id}>
                 <Character 
                     name={character.name}
@@ -12,6 +14,7 @@ const CharacterList = ({ characters }) => (
                     image={character.image}
                 />
             </li>
+        </div>
         ))}
     </ul>
 );
