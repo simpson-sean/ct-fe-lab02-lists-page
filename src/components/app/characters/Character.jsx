@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-const Character = ({ name, status, image }) => (
+const Character = ({ name, status, image, id }) => (
     <>
-        <img src={image} alt={name} />
-        <p>{name}</p>
-        <p>{status}</p>
+        <Link to={`/${id}`}><img src={image} alt={name} /></Link>
+        <p>{name} - {status}</p>
     </>
 );
 
 Character.propTypes = {
     name: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     status: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
 };
