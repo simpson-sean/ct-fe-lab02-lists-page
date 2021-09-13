@@ -3,7 +3,6 @@ import { findCharacterById } from '../services/RickAndMortyApi';
 import { NavLink } from 'react-router-dom';
 
 
-
 export default class CharDetailContainer extends Component {
 
     state = {
@@ -17,7 +16,6 @@ export default class CharDetailContainer extends Component {
     };
 
     render() {
-        console.log(this.state);
         return (
             <div>
                 <h1>Character Details</h1>
@@ -27,6 +25,7 @@ export default class CharDetailContainer extends Component {
                 <h2>Name: {this.state.characterDetails.name}</h2>
                 <h2>Status: {this.state.characterDetails.status}</h2>
                 <NavLink className='nav-links' exact to="/">Home</NavLink>
+                <div data-testid="testing-div" />
             </div>
         )
     }
