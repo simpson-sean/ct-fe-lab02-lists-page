@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CharDetailContainer renders a single character 1`] = `
+<div
+  data-testid="testing-div"
+>
+  <h1>
+    Character Details
+  </h1>
+  <center>
+    <img
+      id="card"
+    />
+  </center>
+  <h2>
+    Name: 
+  </h2>
+  <h2>
+    Status: 
+  </h2>
+  <a
+    aria-current="page"
+    class="nav-links active"
+    href="/"
+  >
+    Home
+  </a>
+</div>
+`;

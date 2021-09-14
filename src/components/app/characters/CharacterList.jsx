@@ -1,18 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Character from './Character.jsx';
-import '../App.css';
+import { Link } from 'react-router-dom';
+
 
 const CharacterList = ({ characters }) => (
     <ul aria-label = "characters">
-        {characters.map((character) => (
-        <div className="cards"> 
-            <li key={character.id}>
-                <Character 
-                    name={character.name}
-                    status={character.status}
-                    image={character.image}
-                />
+        {characters.map((character) => (   
+        <div key={character.id}> 
+            <li>
+                <Link to={`/${character.id}`}>
+                    <Character 
+                        name={character.name}
+                        status={character.status}
+                        image={character.image}
+                        id={character.id}
+                    />
+                </Link>
             </li>
         </div>
         ))}

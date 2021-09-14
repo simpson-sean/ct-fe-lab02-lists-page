@@ -1,33 +1,30 @@
 import React, { Component } from 'react';
+import { findCharacterById } from '../services/RickAndMortyApi';
+import { NavLink } from 'react-router-dom';
+
 
 export default class CharDetailContainer extends Component {
 
     state = {
         characterDetails: {},
-        loading: false,
+        loading: true,
     };
 
     componentDidMount() {
-        this.getDetails();
-    };
-
-    getDetails = async () => {
-        this.setState({ loading: true })
-        const charId = this.props.match.params.charId;
-        const charData = await fetch(`https://rickandmortyapi.com/api/character/${charId}`);
-        const details = await charData.json();
-
-        this.setState( {details} );
+        findCharacterById(this.props.match.params.id).then((character) =>
+        this.setState({ characterDetails: character, loading: false }));
     };
 
     render() {
         return (
-            <div>
-                <h3>Character Details</h3>
-                {/* <h2>{this.props.match.params.id}</h2>
-                {/* <h2>{this.props.characterDetails.name}</h2>
-                <h2>{this.props.characterDetails.status}</h2>
-                <p>{this.props.characterDetails.image}</p> */} */}
+            <div data-testid="testing-div">
+                <h1>Character Details</h1>
+                <center>
+                    <img src={this.state.characterDetails.image} id='card'></img>
+                </center>
+                <h2>Name: {this.state.characterDetails.name}</h2>
+                <h2>Status: {this.state.characterDetails.status}</h2>
+                <NavLink className='nav-links' exact to="/">Home</NavLink>
             </div>
         )
     }
