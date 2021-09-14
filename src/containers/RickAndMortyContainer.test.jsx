@@ -6,6 +6,7 @@ import { render, screen } from '@testing-library/react';
 import RickAndMortyContainer from './RickAndMortyContainer';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
+import { MemoryRouter } from 'react-router-dom';
 
 const server = setupServer(
     rest.get('https://rickandmortyapi.com/api/character', (req, res, ctx) => {
@@ -29,11 +30,14 @@ describe('RickAndMortyContainer', () => {
     afterAll(() => server.close());
 
     it('renders a list of characters', async () => {
-        render(<RickAndMortyContainer />);
+        render(
+        <MemoryRouter>
+            <RickAndMortyContainer />
+        </MemoryRouter>
+        );
+        screen.getByAltText('loading spinner')
 
-        screen.getByAltText('loading spinner');
-
-        const ul = await screen.findByRole('list', { name: 'characters' });
+        const ul = await screen.findByRole('list', { name: 'characters' }, {timeout: 3000});
 
         expect(ul).toMatchSnapshot();
     })

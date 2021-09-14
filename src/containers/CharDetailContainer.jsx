@@ -17,7 +17,7 @@ export default class CharDetailContainer extends Component {
 
     render() {
         return (
-            <div>
+            <div data-testid="testing-div">
                 <h1>Character Details</h1>
                 <center>
                     <img src={this.state.characterDetails.image} id='card'></img>
@@ -25,7 +25,6 @@ export default class CharDetailContainer extends Component {
                 <h2>Name: {this.state.characterDetails.name}</h2>
                 <h2>Status: {this.state.characterDetails.status}</h2>
                 <NavLink className='nav-links' exact to="/">Home</NavLink>
-                <div data-testid="testing-div" />
             </div>
         )
     }
